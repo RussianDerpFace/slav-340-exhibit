@@ -1,6 +1,8 @@
 # Literature as an Instrument of Resistance in the USSR
 ### SLAV 242/340B · Digital Exhibit
 
+**Live:** <https://slav-340-exhibit.pages.dev>
+
 A bilingual (RU/EN) React-based digital museum exhibit exploring Soviet
 literature as resistance, through four authors and nine halls.
 
@@ -33,21 +35,20 @@ Then visit <http://localhost:8080/>.
 
 ## Deploying to Cloudflare Pages
 
-Cloudflare Pages serves the repo as-is — no build command, no framework
-preset.
+This repo is already deployed as
+<https://slav-340-exhibit.pages.dev> (project name `slav-340-exhibit`,
+production branch `main`). Two redeploy paths:
 
-1. Push this repo to GitHub (or GitLab/Bitbucket).
-2. In the Cloudflare dashboard → **Pages → Create a project → Connect to Git**, pick this repo.
-3. Configure the build:
+**A. Direct upload (current setup — one command, no GitHub connection needed):**
 
-   | Field                     | Value  |
-   | ------------------------- | ------ |
-   | Framework preset          | `None` |
-   | Build command             | *(leave empty)* |
-   | Build output directory    | `/`    |
-   | Root directory            | `/`    |
+```bash
+npx wrangler pages deploy . --project-name=slav-340-exhibit --branch=main --commit-dirty=true
+```
 
-4. **Save and deploy**. Subsequent pushes to `main` auto-deploy.
+**B. Connect GitHub for auto-deploys on push:** in the Cloudflare dashboard
+→ `slav-340-exhibit` → **Settings → Builds & deployments → Connect to
+Git**, pick this repo. Build command stays *empty*, output directory `/`.
+Subsequent `git push origin main` then auto-deploys.
 
 All audio and images live in the repo (`audio/`, `images/`), so there
 are no external CDN dependencies at runtime — narration plays full
