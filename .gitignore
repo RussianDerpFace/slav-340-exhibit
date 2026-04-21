@@ -20,3 +20,7 @@ desktop.ini
 _syntax_check.js
 *.log
 .tmp/
+
+# Wrangler / Cloudflare CLI caches
+.wrangler/
+.dev.vars
