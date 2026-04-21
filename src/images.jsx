@@ -21,6 +21,17 @@ window.IMG = {
   trowel:     "images/trowel.png",
 };
 
+// Living portraits — short looped videos used by RealPortrait. The still
+// image in window.IMG stays attached as the <video> poster so every
+// portrait has an instant first paint + a graceful fallback if the video
+// can't load (e.g. on a bandwidth-limited mobile).
+window.PORTRAIT = {
+  khvylovy:     "portraits/khvylovy.mp4",
+  dovlatov:     "portraits/dovlatov.mp4",
+  solzhenitsyn: "portraits/solzhenitsyn.mp4",
+  bulgakov:     "portraits/bulgakov.mp4",
+};
+
 // Narration is bilingual — each slot holds a RU track and an EN track
 // (AI-generated twin). The exhibit's UI language toggle swaps the
 // <audio> src at render time via window.audioFor(). If a language is
@@ -49,9 +60,15 @@ window.audioFor = function(slot, lang){
   return entry[lang] || null;
 };
 
-// A portrait card that loads a real image with a sepia archival filter
-function RealPortrait({ src, name, years, tag, fallbackInitials }){
-  const [err, setErr] = React.useState(false);
+// A portrait card that — when given a `video` source — plays a silent
+// looped "living portrait" of the author behind the archival sepia
+// treatment. Falls back to the still `src` (shown as poster) if the
+// video fails or isn't provided, and finally to initials if both are
+// missing. Muted + playsInline + autoPlay lets iOS Safari start
+// without a user gesture.
+function RealPortrait({ src, video, name, years, tag, fallbackInitials }){
+  const [mediaErr, setMediaErr] = React.useState(false);
+  const portraitFilter = "sepia(0.55) contrast(1.05) brightness(0.92) saturate(0.65)";
   return (
     <div style={{
       aspectRatio:"3/4",
@@ -61,10 +78,24 @@ function RealPortrait({ src, name, years, tag, fallbackInitials }){
       background:"oklch(0.3 0.01 60)",
       overflow:"hidden"
     }}>
-      {!err ? (
-        <img src={src} alt={name} onError={() => setErr(true)} style={{
+      {video && !mediaErr ? (
+        <video
+          src={video}
+          poster={src}
+          autoPlay loop muted playsInline
+          preload="auto"
+          aria-label={name}
+          onError={() => setMediaErr(true)}
+          style={{
+            width:"100%",height:"100%",objectFit:"cover",
+            filter:portraitFilter,
+            display:"block"
+          }}
+        />
+      ) : src && !mediaErr ? (
+        <img src={src} alt={name} onError={() => setMediaErr(true)} style={{
           width:"100%",height:"100%",objectFit:"cover",
-          filter:"sepia(0.55) contrast(1.05) brightness(0.92) saturate(0.65)",
+          filter:portraitFilter,
           display:"block"
         }}/>
       ) : (

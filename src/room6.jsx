@@ -19,7 +19,7 @@ function Room6({ onExit, onNav }){
         marginBottom:36,padding:"24px 28px",background:"var(--paper)",
         border:"1px solid var(--ink-soft)",boxShadow:"3px 4px 0 var(--paper-shadow)"
       }}>
-        <window.RealPortrait src={window.IMG.bulgakov} name="Михаил Булгаков" years="1891 — 1940" tag="МОСКВА"/>
+        <window.RealPortrait src={window.IMG.bulgakov} video={window.PORTRAIT && window.PORTRAIT.bulgakov} name="Михаил Булгаков" years="1891 — 1940" tag="МОСКВА"/>
         <div>
           <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.25em",color:"var(--stamp)",fontWeight:700,marginBottom:8}}>
             {lang==='en'?"AUTHOR FILE":"ДЕЛО АВТОРА"}
