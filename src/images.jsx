@@ -13,6 +13,12 @@ window.IMG = {
   gulag:      "images/gulag.jpg",           // File:The fence at the old GULag in Perm-36.JPG
   samizdat:   "images/samizdat.jpg",        // File:Russian samizdat and photo negatives...jpg
   typewriter: "images/typewriter.jpg",      // File:Olivetti Lettera 22 at the MOMA.jpg
+
+  // Room 4 artifact photographs — camp-scene renderings of the three
+  // objects Solzhenitsyn treats as vessels of dignity.
+  bread:      "images/bread.png",
+  spoon:      "images/spoon.png",           // note the prisoner number "Ш-854" carved in the handle
+  trowel:     "images/trowel.png",
 };
 
 // Narration recorded by the exhibit partner + AI-generated overlays.
