@@ -552,19 +552,27 @@ function TopBar({ onExit }){
         fontFamily:"var(--mono)",fontSize:11,letterSpacing:"0.2em",
         color:"var(--ink)",cursor:"pointer",textTransform:"uppercase"
       }}>← {lang === 'en' ? "Floor plan" : "К плану"}</button>
-      <div style={{display:"flex",gap:0,border:"1px solid var(--ink)"}}>
-        <button onClick={() => setLang("ru")} style={{
-          background: lang === "ru" ? "var(--ink)" : "transparent",
-          color: lang === "ru" ? "var(--paper)" : "var(--ink)",
-          border:"none",padding:"8px 14px",fontFamily:"var(--mono)",
-          fontSize:11,letterSpacing:"0.15em",cursor:"pointer"
-        }}>RU/UA</button>
-        <button onClick={() => setLang("en")} style={{
-          background: lang === "en" ? "var(--ink)" : "transparent",
-          color: lang === "en" ? "var(--paper)" : "var(--ink)",
-          border:"none",borderLeft:"1px solid var(--ink)",padding:"8px 14px",
-          fontFamily:"var(--mono)",fontSize:11,letterSpacing:"0.15em",cursor:"pointer"
-        }}>EN</button>
+      <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:4}}>
+        <div style={{display:"flex",gap:0,border:"1px solid var(--ink)"}}>
+          <button onClick={() => setLang("ru")} style={{
+            background: lang === "ru" ? "var(--ink)" : "transparent",
+            color: lang === "ru" ? "var(--paper)" : "var(--ink)",
+            border:"none",padding:"8px 14px",fontFamily:"var(--mono)",
+            fontSize:11,letterSpacing:"0.15em",cursor:"pointer"
+          }}>RU/UA</button>
+          <button onClick={() => setLang("en")} style={{
+            background: lang === "en" ? "var(--ink)" : "transparent",
+            color: lang === "en" ? "var(--paper)" : "var(--ink)",
+            border:"none",borderLeft:"1px solid var(--ink)",padding:"8px 14px",
+            fontFamily:"var(--mono)",fontSize:11,letterSpacing:"0.15em",cursor:"pointer"
+          }}>EN</button>
+        </div>
+        <span style={{
+          fontFamily:"var(--mono)",fontSize:9,letterSpacing:"0.15em",
+          color:"var(--ink-ghost)",fontStyle:"italic"
+        }}>
+          ↑ {lang === 'en' ? "click to switch language" : "нажмите, чтобы сменить язык"}
+        </span>
       </div>
     </div>
   );
