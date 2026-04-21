@@ -1,0 +1,25 @@
+Image Credits — SLAV 242/340B Digital Exhibit
+==============================================
+
+All images are sourced from Wikimedia Commons under Public Domain
+or Creative Commons licenses. Original file pages:
+
+Portraits
+---------
+khvylovy.jpg     File:Mykola Khvylovy.jpg                       PD (author d. 1933)
+dovlatov.jpg     File:Dovlatov-memorial-plaque-spb.jpg          CC BY-SA (memorial plaque, St. Petersburg)
+                 — No free-license portrait of Dovlatov exists on Commons;
+                   memorial relief stands in for the author image.
+solzhenitsyn.jpg File:Aleksandr Solzhenitsyn 1974crop.jpg       CC BY 3.0 (Bundesarchiv / Verhoeff)
+bulgakov.jpg     File:Mikhail Bulgakov Russian writer.jpg       PD (author d. 1940)
+
+Thematic imagery
+----------------
+redSquare.jpg    File:Red Square, Moscow, Russia.jpg            CC BY-SA
+gulag.jpg        File:The fence at the old GULag in Perm-36.JPG CC BY-SA (Perm-36 memorial museum)
+samizdat.jpg     File:Russian samizdat and photo negatives of
+                 unofficial literature in the USSR.jpg          CC BY-SA
+typewriter.jpg   File:Olivetti Lettera 22 at the MOMA.jpg       CC BY-SA
+
+All files downloaded 2026-04-20 via Wikimedia Commons' Special:FilePath
+redirector, which is the stable endpoint for fetching current file paths.

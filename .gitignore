@@ -1,0 +1,22 @@
+# Build artifacts (Cloudflare Pages serves this repo as-is; nothing to build)
+node_modules/
+package.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor cruft
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local experiments
+_syntax_check.js
+*.log
+.tmp/
