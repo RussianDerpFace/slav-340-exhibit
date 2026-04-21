@@ -8,7 +8,7 @@ function Room0({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Welcome to the exhibit" : "Добро пожаловать на выставку",
         narrator: lang==='en' ? "АУДИОГИД · VESTIBULE" : "АУДИОГИД · ВЕСТИБЮЛЬ",
-        src: window.AUDIO && window.AUDIO.vestibule,
+        src: window.audioFor && window.audioFor('vestibule', lang),
         duration: "2:14"
       }}
     >

@@ -8,7 +8,7 @@ function Room1({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Khvylovy and the Executed Renaissance" : "Хвылевой и расстрелянное возрождение",
         narrator: lang==='en' ? "PARTNER · MYKHAILO KHVYLOVY" : "АУДИОГИД · МИХАЙЛО ХВИЛЬОВИЙ",
-        src: window.AUDIO && window.AUDIO.khvylovy,
+        src: window.audioFor && window.audioFor('khvylovy', lang),
         duration: "5:10"
       }}
       tint="linear-gradient(180deg, oklch(0.91 0.015 75) 0%, oklch(0.86 0.03 30 / 0.3) 100%)"

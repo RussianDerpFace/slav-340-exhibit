@@ -10,7 +10,7 @@ function Room7({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Master, Pilate, Margarita" : "Мастер, Пилат, Маргарита",
         narrator: lang==='en' ? "АУДИОГИД · BULGAKOV II" : "АУДИОГИД · БУЛГАКОВ II",
-        src: window.AUDIO && window.AUDIO.bulg2,
+        src: window.audioFor && window.audioFor('bulg2', lang),
         duration: "6:10"
       }}
       tint="linear-gradient(180deg, oklch(0.82 0.025 280 / 0.4) 0%, oklch(0.78 0.04 30 / 0.35) 100%)"

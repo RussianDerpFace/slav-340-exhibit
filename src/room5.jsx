@@ -10,7 +10,7 @@ function Room5({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "3,653 days: the arithmetic of annihilation" : "3 653 дня: арифметика уничтожения",
         narrator: lang==='en' ? "АУДИОГИД · SOLZHENITSYN III" : "АУДИОГИД · СОЛЖЕНИЦЫН III",
-        src: window.AUDIO && window.AUDIO.solz3,
+        src: window.audioFor && window.audioFor('solz3', lang),
         duration: "4:22"
       }}
       tint="linear-gradient(180deg, oklch(0.88 0.012 70) 0%, oklch(0.78 0.018 55) 100%)"

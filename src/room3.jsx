@@ -8,7 +8,7 @@ function Room3({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Shukhov's code of survival" : "Кодекс выживания Шухова",
         narrator: lang==='en' ? "АУДИОГИД · SOLZHENITSYN I" : "АУДИОГИД · СОЛЖЕНИЦЫН I",
-        src: window.AUDIO && window.AUDIO.solz1,
+        src: window.audioFor && window.audioFor('solz1', lang),
         duration: "6:02"
       }}
       tint="linear-gradient(180deg, oklch(0.88 0.012 70) 0%, oklch(0.82 0.015 60) 100%)"

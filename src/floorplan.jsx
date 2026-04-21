@@ -249,7 +249,7 @@ function FloorPlan({ onEnter }){
             ? "Welcome to the exhibit · four voices, one resistance"
             : "Добро пожаловать на выставку · четыре голоса, одно сопротивление"}
           narrator={lang==='en' ? "GUIDE NARRATION" : "ГОЛОС ЭКСКУРСОВОДА"}
-          src={window.AUDIO && window.AUDIO.intro}
+          src={window.audioFor && window.audioFor('intro', lang)}
           duration="2:00"
         />
 

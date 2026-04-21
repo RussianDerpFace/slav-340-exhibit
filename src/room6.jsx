@@ -8,7 +8,7 @@ function Room6({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Woland in the Variety Theater" : "Воланд в Варьете",
         narrator: lang==='en' ? "АУДИОГИД · BULGAKOV I" : "АУДИОГИД · БУЛГАКОВ I",
-        src: window.AUDIO && window.AUDIO.bulg1,
+        src: window.audioFor && window.audioFor('bulg1', lang),
         duration: "5:45"
       }}
       tint="linear-gradient(180deg, oklch(0.86 0.015 320 / 0.35) 0%, oklch(0.82 0.025 280 / 0.4) 100%)"

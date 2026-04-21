@@ -21,25 +21,32 @@ window.IMG = {
   trowel:     "images/trowel.png",
 };
 
-// Narration recorded by the exhibit partner + AI-generated overlays.
-// Each slot points at a file in audio/. A null slot renders the
-// AudioPlayer in an inactive "FORTHCOMING" state without breaking
-// layout, so new narration can be dropped in with a one-line change.
+// Narration is bilingual — each slot holds a RU track and an EN track
+// (AI-generated twin). The exhibit's UI language toggle swaps the
+// <audio> src at render time via window.audioFor(). If a language is
+// missing for a given slot, AudioPlayer gracefully falls into its
+// "FORTHCOMING" inactive state rather than silently playing the wrong
+// language.
 window.AUDIO = {
-  // Partner-recorded
-  intro:     "audio/Intro.m4a",                        // floor plan overview
-  khvylovy:  "audio/Khvylovy.m4a",                     // Room 1 deep dive
-  dovlatov:  "audio/Dovlatov.m4a",                     // Room 2 deep dive
-  synthesis: "audio/Synthesis-Khvylovy-Dovlatov.m4a",  // Room 2 bridge / R1↔R2 synthesis
+  intro:       { ru: "audio/Intro.ru.m4a",                        en: "audio/Intro.en.mp3" },                        // floor-plan overview
+  khvylovy:    { ru: "audio/Khvylovy.ru.m4a",                     en: "audio/Khvylovy.en.mp3" },                     // Room 1
+  dovlatov:    { ru: "audio/Dovlatov.ru.m4a",                     en: "audio/Dovlatov.en.mp3" },                     // Room 2
+  synthesis:   { ru: "audio/Synthesis-Khvylovy-Dovlatov.ru.m4a",  en: "audio/Synthesis-Khvylovy-Dovlatov.en.mp3" },  // R2 bridge
+  vestibule:   { ru: "audio/Vestibule.ru.mp3",                    en: "audio/Vestibule.en.mp3" },                    // Room 0
+  solz1:       { ru: "audio/Solzhenitsyn-Taiga.ru.mp3",           en: "audio/Solzhenitsyn-Taiga.en.mp3" },           // Room 3
+  solz2:       { ru: "audio/Solzhenitsyn-Artifacts.ru.mp3",       en: "audio/Solzhenitsyn-Artifacts.en.mp3" },       // Room 4
+  solz3:       { ru: "audio/Solzhenitsyn-HappyDay.ru.mp3",        en: "audio/Solzhenitsyn-HappyDay.en.mp3" },        // Room 5
+  bulg1:       { ru: "audio/Bulgakov-Variete.ru.mp3",             en: "audio/Bulgakov-Variete.en.mp3" },             // Room 6
+  bulg2:       { ru: "audio/Bulgakov-Manuscripts.ru.mp3",         en: "audio/Bulgakov-Manuscripts.en.mp3" },         // Room 7
+  cafeClosing: { ru: "audio/Cafe-Closing.ru.mp3",                 en: "audio/Cafe-Closing.en.mp3" },                 // Room 8
+};
 
-  // Per-room narration
-  vestibule:    "audio/Vestibule.mp3",                 // Room 0 entry
-  solz1:        "audio/Solzhenitsyn-Taiga.mp3",        // Room 3 · law of the taiga
-  solz2:        "audio/Solzhenitsyn-Artifacts.mp3",    // Room 4 · bread / spoon / trowel
-  solz3:        "audio/Solzhenitsyn-HappyDay.mp3",     // Room 5 · 3653 days
-  bulg1:        "audio/Bulgakov-Variete.mp3",          // Room 6 · Variety Theater
-  bulg2:        "audio/Bulgakov-Manuscripts.mp3",      // Room 7 · manuscripts don't burn
-  cafeClosing:  "audio/Cafe-Closing.mp3",              // Room 8 · conclusion
+// Lookup helper. Returns null if either the slot or the language is
+// missing — AudioPlayer's `inactive` branch takes over from there.
+window.audioFor = function(slot, lang){
+  const entry = window.AUDIO && window.AUDIO[slot];
+  if (!entry) return null;
+  return entry[lang] || null;
 };
 
 // A portrait card that loads a real image with a sepia archival filter

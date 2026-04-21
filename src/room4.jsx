@@ -46,7 +46,7 @@ function Room4({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Three artifacts, three acts of dignity" : "Три артефакта, три акта достоинства",
         narrator: lang==='en' ? "АУДИОГИД · SOLZHENITSYN II" : "АУДИОГИД · СОЛЖЕНИЦЫН II",
-        src: window.AUDIO && window.AUDIO.solz2,
+        src: window.audioFor && window.audioFor('solz2', lang),
         duration: "5:30"
       }}
       tint="linear-gradient(180deg, oklch(0.88 0.012 70) 0%, oklch(0.82 0.015 60) 100%)"

@@ -10,7 +10,7 @@ function Room2({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Dovlatov: the absurd as diagnosis" : "Довлатов: абсурд как диагноз",
         narrator: lang==='en' ? "PARTNER · SERGEI DOVLATOV" : "АУДИОГИД · СЕРГЕЙ ДОВЛАТОВ",
-        src: window.AUDIO && window.AUDIO.dovlatov,
+        src: window.audioFor && window.audioFor('dovlatov', lang),
         duration: "4:48"
       }}
     >
@@ -102,7 +102,7 @@ function Room2({ onExit, onNav }){
         subtitle={lang==='en'
           ? "A short bridge before we step into Solzhenitsyn's camp."
           : "Короткий мост перед входом в лагерь Солженицына."}
-        src={window.AUDIO && window.AUDIO.synthesis}
+        src={window.audioFor && window.audioFor('synthesis', lang)}
         duration="0:45"
       />
     </Room>

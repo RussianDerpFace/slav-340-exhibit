@@ -58,7 +58,7 @@ function Room8({ onExit, onNav }){
       audio={{
         title: lang==='en' ? "Closing: literature remembers" : "Заключение: литература помнит",
         narrator: lang==='en' ? "АУДИОГИД · CAFÉ BULGAKOV" : "АУДИОГИД · КАФЕ «БУЛГАКОВ»",
-        src: window.AUDIO && window.AUDIO.cafeClosing,
+        src: window.audioFor && window.audioFor('cafeClosing', lang),
         duration: "3:08"
       }}
     >
