@@ -65,7 +65,7 @@ function FloorPlan({ onEnter }){
           {/* censor's desk + typewriter */}
           <rect x="20" y="30" width="70" height="28" {...thin}/>
           <rect x="36" y="36" width="38" height="16" {...thin}/>
-          <text x="42" y="47" fontSize="6" fontFamily="var(--mono)" fill="var(--ink-soft)">TYPE</text>
+          <text x="42" y="47" fontSize="6" fontFamily="var(--mono)" fill="var(--ink-soft)">{lang==='en' ? "TYPE" : "ПЕЧ."}</text>
           {/* stacked files */}
           <rect x="120" y="30" width="70" height="8" {...thin}/>
           <rect x="120" y="40" width="70" height="8" {...thin}/>
@@ -164,7 +164,7 @@ function FloorPlan({ onEnter }){
           <text x="30" y="150" fontSize="7" fontFamily="var(--mono)" fill="var(--ink-soft)" letterSpacing="1">КНИГА ОТЗЫВОВ</text>
           {/* exit arrow */}
           <path d="M 110,155 L 165,155 M 155,147 L 165,155 L 155,163" stroke="var(--stamp)" strokeWidth="1.5" fill="none"/>
-          <text x="110" y="150" fontSize="7" fontFamily="var(--mono)" fill="var(--stamp)" letterSpacing="1" fontWeight="700">EXIT</text>
+          <text x="110" y="150" fontSize="7" fontFamily="var(--mono)" fill="var(--stamp)" letterSpacing="1" fontWeight="700">{lang==='en' ? "EXIT" : "ВЫХОД"}</text>
         </>);
       default: return null;
     }
@@ -199,7 +199,9 @@ function FloorPlan({ onEnter }){
               fontFamily:"var(--mono)",fontSize:11,letterSpacing:"0.35em",
               color:"var(--ink-soft)",textTransform:"uppercase",marginBottom:10
             }}>
-              SLAV 242/340B · REVOLUTIONS OF THE MIND
+              {lang === 'en'
+                ? "SLAV 242/340B · REVOLUTIONS OF THE MIND"
+                : "SLAV 242/340B · РЕВОЛЮЦИИ СОЗНАНИЯ"}
             </div>
             <h1 style={{
               fontFamily:"var(--serif)",fontSize:"clamp(36px, 5vw, 64px)",
@@ -598,7 +600,9 @@ function FloorPlan({ onEnter }){
           fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.2em",
           color:"var(--ink-ghost)"
         }}>
-          · SAMIZDAT EDITION · КОПИЯ №1 · ЧИТАЙ И ПЕРЕДАЙ ДРУГОМУ ·
+          {lang === 'en'
+            ? "· SAMIZDAT EDITION · COPY №1 · READ AND PASS IT ON ·"
+            : "· САМИЗДАТ · КОПИЯ №1 · ЧИТАЙ И ПЕРЕДАЙ ДРУГОМУ ·"}
         </div>
       </div>
     </div>

@@ -48,6 +48,7 @@ function Stamp({ children, color = "stamp", rotate = -4, size = 1, style = {}, c
 
 // ============ Room number plate ============
 function RoomPlate({ num, total = 8, label, sub }){
+  const { lang } = useContext(LangContext);
   return (
     <div style={{display:"flex",alignItems:"baseline",gap:24,flexWrap:"wrap",marginBottom:12}}>
       <div style={{
@@ -63,7 +64,7 @@ function RoomPlate({ num, total = 8, label, sub }){
           color:"var(--ink-soft)",textTransform:"uppercase",marginBottom:8,
           borderBottom:"1px dashed var(--ink-soft)",paddingBottom:6,display:"inline-block"
         }}>
-          ЗАЛ {num} / {total} · HALL {num} OF {total}
+          {lang === 'en' ? `HALL ${num} OF ${total}` : `ЗАЛ ${num} ИЗ ${total}`}
         </div>
         <div style={{
           fontFamily:"var(--serif)",fontSize:"clamp(28px, 3.6vw, 52px)",
@@ -78,8 +79,18 @@ function RoomPlate({ num, total = 8, label, sub }){
   );
 }
 
+// Corner tag inside the Quote component — shows the quote's source language
+// using the alphabet of the active UI language, so RU mode never leaks Latin.
+function quoteLangTag(quoteLang, uiLang){
+  const CYR = { ru: "РУС", ua: "УКР", en: "АНГЛ" };
+  const LAT = { ru: "RU",  ua: "UA",  en: "EN"   };
+  const table = uiLang === "en" ? LAT : CYR;
+  return table[quoteLang] || (uiLang === "en" ? String(quoteLang).toUpperCase() : "");
+}
+
 // ============ Typewritten quote block ============
-function Quote({ children, attr, lang = "ru", big = false, redacted = [] }){
+function Quote({ children, attr, lang: quoteLang = "ru", big = false, redacted = [] }){
+  const { lang: uiLang } = useContext(LangContext);
   const content = typeof children === "string" ? children : "";
   return (
     <figure style={{
@@ -98,7 +109,7 @@ function Quote({ children, attr, lang = "ru", big = false, redacted = [] }){
       <div style={{
         position:"absolute",top:8,left:8,fontFamily:"var(--mono)",
         fontSize:10,color:"var(--ink-ghost)",letterSpacing:"0.2em"
-      }}>» {lang.toUpperCase()}</div>
+      }}>» {quoteLangTag(quoteLang, uiLang)}</div>
       <blockquote style={{margin:"8px 0 0 0",fontStyle:"italic"}}>
         «{children}»
       </blockquote>
@@ -172,6 +183,7 @@ function fmtTime(s){
 }
 
 function AudioPlayer({ title, narrator, src, duration: durationHint }){
+  const { lang } = useContext(LangContext);
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -232,7 +244,9 @@ function AudioPlayer({ title, narrator, src, duration: durationHint }){
       </button>
       <div style={{flex:1,minWidth:0}}>
         <div style={{fontSize:10,opacity:0.6,letterSpacing:"0.2em",marginBottom:4}}>
-          {(narrator || "АУДИОГИД")}{inactive && ` · ${failed ? "UNAVAILABLE" : "FORTHCOMING"}`}
+          {(narrator || "АУДИОГИД")}{inactive && ` · ${failed
+            ? (lang === 'en' ? "UNAVAILABLE" : "НЕДОСТУПНО")
+            : (lang === 'en' ? "FORTHCOMING" : "СКОРО")}`}
         </div>
         <div style={{fontSize:13,marginBottom:6,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
           {title}
@@ -277,6 +291,7 @@ function AudioPlayer({ title, narrator, src, duration: durationHint }){
 // player: paper-toned, italic label-set, horizontal rules — reads as a
 // marginal note, not a repeat of the main audio slot.
 function BridgeAudio({ title, subtitle, src, duration: durationHint, label }){
+  const { lang } = useContext(LangContext);
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -329,7 +344,7 @@ function BridgeAudio({ title, subtitle, src, duration: durationHint, label }){
           fontWeight:700,
           textTransform:"uppercase"
         }}>
-          ⟿ {label || "СИНТЕЗ · SYNTHESIS"} ⟿
+          ⟿ {label || (lang === 'en' ? "SYNTHESIS" : "СИНТЕЗ")} ⟿
         </span>
       </div>
 
@@ -400,7 +415,13 @@ function BridgeAudio({ title, subtitle, src, duration: durationHint, label }){
               fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.15em",
               color:"var(--ink-soft)",fontVariantNumeric:"tabular-nums"
             }}>
-              <span>{inactive ? (failed ? "UNAVAILABLE" : "FORTHCOMING") : (playing ? "PLAYING" : "READY")}</span>
+              <span>{inactive
+                ? (failed
+                    ? (lang === 'en' ? "UNAVAILABLE" : "НЕДОСТУПНО")
+                    : (lang === 'en' ? "FORTHCOMING" : "СКОРО"))
+                : (playing
+                    ? (lang === 'en' ? "PLAYING" : "ИГРАЕТ")
+                    : (lang === 'en' ? "READY"  : "ГОТОВО"))}</span>
               <span>{(function(){
                 const f = (s)=>{ if(!isFinite(s)||s<0) return "0:00"; const m=Math.floor(s/60),r=Math.floor(s%60); return `${m}:${String(r).padStart(2,"0")}`; };
                 return `${f(current)} / ${duration ? f(duration) : (durationHint || "—:—")}`;
@@ -447,10 +468,15 @@ function TornEdge({ color = "var(--paper)", flip = false }){
 
 // ============ Room shell ============
 function Room({ num, label, sub, audio, children, onExit, onNav, totalRooms, tint }){
+  const { lang } = useContext(LangContext);
   const theme = (window.THEMES && window.THEMES[num]) || {};
   const accent = theme.accent || "var(--stamp)";
   const secondary = theme.secondary;
   const bg = tint || theme.tint || "transparent";
+  // Theme subtitle is { ru, en }; pick based on UI language.
+  const subtitleText = theme.subtitle
+    ? (typeof theme.subtitle === "string" ? theme.subtitle : (theme.subtitle[lang] || theme.subtitle.ru))
+    : null;
   return (
     <div style={{
       minHeight:"100vh",padding:"40px clamp(20px, 5vw, 80px) 80px",
@@ -463,7 +489,7 @@ function Room({ num, label, sub, audio, children, onExit, onNav, totalRooms, tin
         maxWidth:960,margin:"0 auto",position:"relative"
       }}>
         <TopBar onExit={onExit}/>
-        {theme.subtitle && (
+        {subtitleText && (
           <div style={{
             fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.4em",
             color:accent,textTransform:"uppercase",marginBottom:14,fontWeight:700,
@@ -471,7 +497,7 @@ function Room({ num, label, sub, audio, children, onExit, onNav, totalRooms, tin
             border:`1px solid ${accent}`,
             transform:"rotate(-0.4deg)"
           }}>
-            {theme.subtitle}
+            {subtitleText}
           </div>
         )}
         {theme.motif && window.MotifBand && (
@@ -525,7 +551,7 @@ function TopBar({ onExit }){
         background:"transparent",border:"1px solid var(--ink)",padding:"8px 16px",
         fontFamily:"var(--mono)",fontSize:11,letterSpacing:"0.2em",
         color:"var(--ink)",cursor:"pointer",textTransform:"uppercase"
-      }}>← К плану · Floor plan</button>
+      }}>← {lang === 'en' ? "Floor plan" : "К плану"}</button>
       <div style={{display:"flex",gap:0,border:"1px solid var(--ink)"}}>
         <button onClick={() => setLang("ru")} style={{
           background: lang === "ru" ? "var(--ink)" : "transparent",
@@ -545,6 +571,8 @@ function TopBar({ onExit }){
 }
 
 function RoomNav({ onNav, num, total }){
+  const { lang } = useContext(LangContext);
+  const word = lang === 'en' ? 'Hall' : 'Зал';
   return (
     <div style={{
       marginTop:60,paddingTop:24,borderTop:"1px dashed var(--ink-soft)",
@@ -552,7 +580,7 @@ function RoomNav({ onNav, num, total }){
     }}>
       {num > 0 ? (
         <button onClick={() => onNav(num - 1)} style={navBtn}>
-          ← Зал {String(num-1).padStart(2,"0")}
+          ← {word} {String(num-1).padStart(2,"0")}
         </button>
       ) : <span/>}
       <div style={{
@@ -563,7 +591,7 @@ function RoomNav({ onNav, num, total }){
       </div>
       {num < total ? (
         <button onClick={() => onNav(num + 1)} style={navBtn}>
-          Зал {String(num+1).padStart(2,"0")} →
+          {word} {String(num+1).padStart(2,"0")} →
         </button>
       ) : <span/>}
     </div>

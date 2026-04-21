@@ -1,6 +1,8 @@
 // Per-room visual themes. Each theme tints the room, adds an accent color,
 // a decorative motif strip and optional ornamental corners.
 
+// Each subtitle is a bilingual { ru, en } object; the Room shell picks
+// the active language. Nothing user-visible stays mixed-language.
 const THEMES = {
   0: {
     // Entry — neutral samizdat
@@ -8,7 +10,7 @@ const THEMES = {
     accent: "oklch(0.48 0.16 28)",
     tint: "transparent",
     motif: "samizdat",
-    subtitle: "ВЕСТИБЮЛЬ · VESTIBULE",
+    subtitle: { ru: "ВЕСТИБЮЛЬ", en: "VESTIBULE" },
   },
   1: {
     // Khvylovy — Ukrainian folk, wheat + cornflower
@@ -17,7 +19,7 @@ const THEMES = {
     secondary: "oklch(0.45 0.14 250)", // cornflower
     tint: "oklch(0.93 0.03 85)",      // warm wheat paper
     motif: "rushnyk",                 // embroidery band
-    subtitle: "УКРАЇНСЬКИЙ ЗАЛ · UKRAINIAN HALL",
+    subtitle: { ru: "УКРАЇНСЬКИЙ ЗАЛ", en: "UKRAINIAN HALL" },
   },
   2: {
     // Dovlatov — editorial gray + censor red, coffee rings
@@ -26,7 +28,7 @@ const THEMES = {
     secondary: "oklch(0.4 0.01 60)",
     tint: "oklch(0.91 0.008 80)",
     motif: "coffee",
-    subtitle: "РЕДАКЦИЯ · EDITORIAL OFFICE",
+    subtitle: { ru: "РЕДАКЦИЯ", en: "EDITORIAL OFFICE" },
   },
   3: {
     // Solzhenitsyn I — frost + barbed wire
@@ -35,7 +37,7 @@ const THEMES = {
     secondary: "oklch(0.25 0.01 60)",
     tint: "oklch(0.92 0.008 220)",    // cool frost
     motif: "barbed",
-    subtitle: "ЛАГЕРЬ · CAMP I",
+    subtitle: { ru: "ЛАГЕРЬ I", en: "CAMP I" },
   },
   4: {
     name: "АРХИПЕЛАГ II",
@@ -43,7 +45,7 @@ const THEMES = {
     secondary: "oklch(0.25 0.01 60)",
     tint: "oklch(0.90 0.008 220)",
     motif: "barbed",
-    subtitle: "ЛАГЕРЬ · CAMP II",
+    subtitle: { ru: "ЛАГЕРЬ II", en: "CAMP II" },
   },
   5: {
     name: "АРХИПЕЛАГ III",
@@ -51,7 +53,7 @@ const THEMES = {
     secondary: "oklch(0.25 0.01 60)",
     tint: "oklch(0.91 0.008 220)",
     motif: "barbed",
-    subtitle: "ЛАГЕРЬ · CAMP III",
+    subtitle: { ru: "ЛАГЕРЬ III", en: "CAMP III" },
   },
   6: {
     // Bulgakov — midnight + moon silver
@@ -60,7 +62,7 @@ const THEMES = {
     secondary: "oklch(0.75 0.02 90)",
     tint: "oklch(0.89 0.015 280)",    // pale moonlit paper
     motif: "stars",
-    subtitle: "МОСКВА · MOSCOW",
+    subtitle: { ru: "МОСКВА", en: "MOSCOW" },
   },
   7: {
     name: "Маргарита",
@@ -68,7 +70,7 @@ const THEMES = {
     secondary: "oklch(0.75 0.02 90)",
     tint: "oklch(0.88 0.018 280)",
     motif: "stars",
-    subtitle: "ПОЛЁТ · THE FLIGHT",
+    subtitle: { ru: "ПОЛЁТ", en: "THE FLIGHT" },
   },
   8: {
     // Café Bulgakov — amber, green banker's lamp, tablecloth
@@ -77,7 +79,7 @@ const THEMES = {
     secondary: "oklch(0.55 0.14 60)", // amber
     tint: "oklch(0.90 0.035 75)",     // warm candlelight
     motif: "cafe",
-    subtitle: "ЛИТЕРАТУРНОЕ КАФЕ · LITERARY CAFÉ",
+    subtitle: { ru: "ЛИТЕРАТУРНОЕ КАФЕ", en: "LITERARY CAFÉ" },
   },
 };
 

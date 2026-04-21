@@ -88,7 +88,7 @@ function BurningManuscript({ lang }){
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20,flexWrap:"wrap",gap:12}}>
         <div>
           <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",color:"oklch(0.7 0.1 60)",marginBottom:4}}>
-            INTERACTIVE · {lang==='en'?"BURN THE MANUSCRIPT":"СОЖГИТЕ РУКОПИСЬ"}
+            {lang==='en' ? "INTERACTIVE · BURN THE MANUSCRIPT" : "ИНТЕРАКТИВ · СОЖГИТЕ РУКОПИСЬ"}
           </div>
           <div style={{fontFamily:"var(--serif)",fontSize:"clamp(22px, 2.4vw, 30px)",fontWeight:700,fontStyle:"italic"}}>
             {lang==='en'?"«Manuscripts don't burn»":"«Рукописи не горят»"}

@@ -23,7 +23,7 @@ function Room0({ onExit, onNav }){
         <div style={{
           position:"absolute",top:20,right:20,fontFamily:"var(--mono)",
           fontSize:10,letterSpacing:"0.3em",opacity:0.5
-        }}>ЗАЛ 00 / ROOM 00</div>
+        }}>{lang === 'en' ? "ROOM 00" : "ЗАЛ 00"}</div>
         <h2 style={{
           fontFamily:"var(--serif)",fontSize:"clamp(32px, 5vw, 56px)",
           margin:"0 0 28px",lineHeight:1.02,fontWeight:700,letterSpacing:"-0.02em"

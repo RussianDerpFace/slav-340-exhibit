@@ -22,10 +22,18 @@ function Room8({ onExit, onNav }){
     setName(""); setMsg("");
   };
 
-  const defaults = [
-    { name:"А. Сахаров", msg:"Молчание невозможно. Молчание это согласие.", date:"1975-12-01"},
-    { name:"Читатель", msg:"Прочитал ночью, передал другу к утру. Так и живёт эта книга.", date:"1968-07-14"},
-    { name:"V. from Taipei", msg:"The phrase «рукописи не горят» stayed with me for weeks.", date:"2023-04-02"},
+  // Seed entries are swapped per UI language so RU mode shows no Latin text.
+  // Real visitor entries (stored in localStorage) are shown verbatim, whatever
+  // language each author chose.
+  const defaults = lang === 'en' ? [
+    { name:"A. Sakharov",         msg:"Silence is impossible. Silence is consent.", date:"1975-12-01"},
+    { name:"Reader",              msg:"Read it overnight, passed it to a friend by morning. That's how this book lives.", date:"1968-07-14"},
+    { name:"V. from Taipei",      msg:"The phrase «manuscripts don't burn» stayed with me for weeks.", date:"2023-04-02"},
+    { name:"Student, SLAV 340",   msg:"Kuzyomin was right. Even online — don't lick bowls, don't inform.", date:"2026-04-18"},
+  ] : [
+    { name:"А. Сахаров",          msg:"Молчание невозможно. Молчание это согласие.", date:"1975-12-01"},
+    { name:"Читатель",            msg:"Прочитал ночью, передал другу к утру. Так и живёт эта книга.", date:"1968-07-14"},
+    { name:"В. из Тайбэя",        msg:"Фраза «рукописи не горят» не отпускала меня неделями.", date:"2023-04-02"},
     { name:"Студентка, SLAV 340", msg:"Кузёмин был прав. Даже в сети не лижи миски, не стучи.", date:"2026-04-18"},
   ];
   const shown = entries.length ? entries : defaults;
@@ -91,7 +99,7 @@ function Room8({ onExit, onNav }){
               color:"var(--cafe-brass)",marginBottom:14,textTransform:"uppercase",
               fontWeight:700
             }}>
-              · ЗАЛ 08 · HALL 08 ·
+              {lang === 'en' ? "· HALL 08 ·" : "· ЗАЛ 08 ·"}
             </div>
 
             {/* Gilt signage */}
@@ -380,7 +388,7 @@ function Room8({ onExit, onNav }){
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:22,flexWrap:"wrap",gap:14,marginTop:12}}>
               <div>
                 <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",color:"var(--cafe-tablecloth-red)",fontWeight:700,marginBottom:6}}>
-                  INTERACTIVE · {lang==='en'?"HOUSE BOOK":"ГОСТЕВАЯ КНИГА"}
+                  {lang==='en' ? "INTERACTIVE · HOUSE BOOK" : "ИНТЕРАКТИВ · ГОСТЕВАЯ КНИГА"}
                 </div>
                 <div style={{fontFamily:"var(--serif)",fontSize:"clamp(24px, 2.6vw, 32px)",fontWeight:700,color:"var(--ink)",fontStyle:"italic",lineHeight:1.1}}>
                   {lang==='en'?"Sign before you leave":"Распишитесь перед уходом"}
@@ -476,7 +484,9 @@ function Room8({ onExit, onNav }){
           fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",
           color:"var(--ink-ghost)",paddingTop:24,borderTop:"1px dashed var(--ink-soft)"
         }}>
-          · SAMIZDAT · ЧИТАЙ И ПЕРЕДАЙ ДРУГОМУ · PASS IT ON · КОПИЯ №1 ·
+          {lang === 'en'
+            ? "· SAMIZDAT · READ AND PASS IT ON · COPY №1 ·"
+            : "· САМИЗДАТ · ЧИТАЙ И ПЕРЕДАЙ ДРУГОМУ · КОПИЯ №1 ·"}
         </div>
 
         {/* Woland's parting words — the last thing the visitor sees */}

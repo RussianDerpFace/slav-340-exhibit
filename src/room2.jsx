@@ -139,7 +139,7 @@ function CensorsDesk({ lang }){
       }}>
         <div>
           <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",opacity:0.6}}>
-            INTERACTIVE · {lang==='en'?"CENSOR'S DESK":"СТОЛ ЦЕНЗОРА"}
+            {lang==='en' ? "INTERACTIVE · CENSOR'S DESK" : "ИНТЕРАКТИВ · СТОЛ ЦЕНЗОРА"}
           </div>
           <div style={{fontFamily:"var(--serif)",fontSize:"clamp(22px, 2.4vw, 28px)",fontWeight:700,marginTop:4}}>
             {lang==='en'?"Remove the offending words":"Вычеркните опасные слова"}

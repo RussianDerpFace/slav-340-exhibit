@@ -493,7 +493,7 @@ function FrozenRation({ lang }){
       }}/>
       <div style={{position:"relative"}}>
         <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",color:"var(--stamp)",fontWeight:700,marginBottom:4}}>
-          INTERACTIVE · {lang==='en'?"THE RATION":"ПАЙКА"}
+          {lang==='en' ? "INTERACTIVE · THE RATION" : "ИНТЕРАКТИВ · ПАЙКА"}
         </div>
         <div style={{fontFamily:"var(--serif)",fontSize:"clamp(22px, 2.4vw, 28px)",fontWeight:700,marginBottom:8}}>
           {lang==='en'?"How cold was the bread?":"Насколько холодным был хлеб?"}
@@ -595,7 +595,7 @@ function CarbonStack({ lang }){
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:16,marginBottom:20,flexWrap:"wrap"}}>
         <div>
           <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",color:"var(--stamp)",fontWeight:700,marginBottom:4}}>
-            INTERACTIVE · {lang==='en'?"SAMIZDAT CARBON COPIES":"САМИЗДАТ · КОПИИ ЧЕРЕЗ КОПИРКУ"}
+            {lang==='en' ? "INTERACTIVE · SAMIZDAT CARBON COPIES" : "ИНТЕРАКТИВ · САМИЗДАТ · КОПИИ ЧЕРЕЗ КОПИРКУ"}
           </div>
           <div style={{fontFamily:"var(--serif)",fontSize:"clamp(22px, 2.4vw, 28px)",fontWeight:700,marginBottom:4}}>
             {lang==='en'?"Peel back the layers":"Разберите стопку"}

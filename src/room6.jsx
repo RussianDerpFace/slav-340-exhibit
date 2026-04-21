@@ -49,7 +49,9 @@ function Room6({ onExit, onNav }){
         <div style={{
           fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.4em",
           color:"oklch(0.75 0.1 60)",textAlign:"center",marginBottom:16,opacity:0.8
-        }}>· ТЕАТР ВАРЬЕТЕ · MOSCOW · СЕАНС ЧЁРНОЙ МАГИИ ·</div>
+        }}>{lang === 'en'
+          ? "· VARIETY THEATRE · MOSCOW · BLACK MAGIC SÉANCE ·"
+          : "· ТЕАТР ВАРЬЕТЕ · МОСКВА · СЕАНС ЧЁРНОЙ МАГИИ ·"}</div>
         <div style={{
           fontFamily:"var(--serif)",fontSize:"clamp(28px, 4vw, 48px)",
           textAlign:"center",fontStyle:"italic",lineHeight:1.15,fontWeight:700,

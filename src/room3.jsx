@@ -51,7 +51,7 @@ function Room3({ onExit, onNav }){
         }}>
           <div style={{
             fontFamily:"var(--mono)",fontSize:10,letterSpacing:"0.3em",opacity:0.5,marginBottom:14
-          }}>» ЭПИГРАФ ЗАЛА · HALL EPIGRAPH</div>
+          }}>» {lang === 'en' ? "HALL EPIGRAPH" : "ЭПИГРАФ ЗАЛА"}</div>
           <blockquote style={{
             fontFamily:"var(--serif)",fontSize:"clamp(20px, 2.6vw, 32px)",
             lineHeight:1.4,margin:0,fontStyle:"italic"
