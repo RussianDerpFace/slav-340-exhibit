@@ -15,14 +15,25 @@ window.IMG = {
   typewriter: "images/typewriter.jpg",      // File:Olivetti Lettera 22 at the MOMA.jpg
 };
 
-// Narration recorded by the exhibit partner. Rooms without a recording
-// leave the slot null — the AudioPlayer renders an inactive state and
-// lights up automatically once a file is dropped in.
+// Narration recorded by the exhibit partner + AI-generated overlays.
+// Each slot points at a file in audio/. A null slot renders the
+// AudioPlayer in an inactive "FORTHCOMING" state without breaking
+// layout, so new narration can be dropped in with a one-line change.
 window.AUDIO = {
+  // Partner-recorded
   intro:     "audio/Intro.m4a",                        // floor plan overview
   khvylovy:  "audio/Khvylovy.m4a",                     // Room 1 deep dive
   dovlatov:  "audio/Dovlatov.m4a",                     // Room 2 deep dive
   synthesis: "audio/Synthesis-Khvylovy-Dovlatov.m4a",  // Room 2 bridge / R1↔R2 synthesis
+
+  // Per-room narration
+  vestibule:    "audio/Vestibule.mp3",                 // Room 0 entry
+  solz1:        "audio/Solzhenitsyn-Taiga.mp3",        // Room 3 · law of the taiga
+  solz2:        "audio/Solzhenitsyn-Artifacts.mp3",    // Room 4 · bread / spoon / trowel
+  solz3:        "audio/Solzhenitsyn-HappyDay.mp3",     // Room 5 · 3653 days
+  bulg1:        "audio/Bulgakov-Variete.mp3",          // Room 6 · Variety Theater
+  bulg2:        "audio/Bulgakov-Manuscripts.mp3",      // Room 7 · manuscripts don't burn
+  cafeClosing:  "audio/Cafe-Closing.mp3",              // Room 8 · conclusion
 };
 
 // A portrait card that loads a real image with a sepia archival filter

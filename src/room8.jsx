@@ -47,7 +47,12 @@ function Room8({ onExit, onNav }){
       sub={lang==='en'
         ? "The last hall. A literary café, after Griboedov's. Sit. Leave a note."
         : "Последний зал. Литературное кафе в духе «Грибоедова». Сядьте. Оставьте запись."}
-      audio={{ title: lang==='en' ? "Closing: literature remembers" : "Заключение: литература помнит", narrator:"GENERAL · АУДИО", duration:"3:08" }}
+      audio={{
+        title: lang==='en' ? "Closing: literature remembers" : "Заключение: литература помнит",
+        narrator: lang==='en' ? "АУДИОГИД · CAFÉ BULGAKOV" : "АУДИОГИД · КАФЕ «БУЛГАКОВ»",
+        src: window.AUDIO && window.AUDIO.cafeClosing,
+        duration: "3:08"
+      }}
     >
       <div style={cafe}>
 

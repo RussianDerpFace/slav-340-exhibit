@@ -7,7 +7,12 @@ function Room7({ onExit, onNav }){
     <Room num={7} totalRooms={8} onExit={onExit} onNav={onNav}
       label={lang==='en' ? "Bulgakov · \"Manuscripts don't burn\"" : "Булгаков · «Рукописи не горят»"}
       sub={lang==='en' ? "Truth, cowardice, and love as rebellion" : "Правда, трусость и любовь как бунт"}
-      audio={{ title: lang==='en' ? "Master, Pilate, Margarita" : "Мастер, Пилат, Маргарита", narrator:"YOUR AUDIO · АУДИО", duration:"6:10" }}
+      audio={{
+        title: lang==='en' ? "Master, Pilate, Margarita" : "Мастер, Пилат, Маргарита",
+        narrator: lang==='en' ? "АУДИОГИД · BULGAKOV II" : "АУДИОГИД · БУЛГАКОВ II",
+        src: window.AUDIO && window.AUDIO.bulg2,
+        duration: "6:10"
+      }}
       tint="linear-gradient(180deg, oklch(0.82 0.025 280 / 0.4) 0%, oklch(0.78 0.04 30 / 0.35) 100%)"
     >
       {/* Burning manuscript interaction */}

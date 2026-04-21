@@ -5,7 +5,12 @@ function Room6({ onExit, onNav }){
     <Room num={6} totalRooms={8} onExit={onExit} onNav={onNav}
       label={lang==='en' ? "Bulgakov · \"Have the citizens changed?\"" : "Булгаков · «Изменились ли горожане?»"}
       sub={lang==='en' ? "The devil as the only truth-teller" : "Дьявол как единственный правдоруб"}
-      audio={{ title: lang==='en' ? "Woland in the Variety Theater" : "Воланд в Варьете", narrator:"YOUR AUDIO · АУДИО", duration:"5:45" }}
+      audio={{
+        title: lang==='en' ? "Woland in the Variety Theater" : "Воланд в Варьете",
+        narrator: lang==='en' ? "АУДИОГИД · BULGAKOV I" : "АУДИОГИД · БУЛГАКОВ I",
+        src: window.AUDIO && window.AUDIO.bulg1,
+        duration: "5:45"
+      }}
       tint="linear-gradient(180deg, oklch(0.86 0.015 320 / 0.35) 0%, oklch(0.82 0.025 280 / 0.4) 100%)"
     >
       <window.MoneyRain/>

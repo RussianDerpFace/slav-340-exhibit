@@ -5,7 +5,12 @@ function Room0({ onExit, onNav }){
     <Room num={0} totalRooms={8} onExit={onExit} onNav={onNav}
       label={lang==='en' ? "Entrance" : "Вход в экспозицию"}
       sub={lang==='en' ? "A general introduction" : "Общее введение"}
-      audio={{ title: lang==='en' ? "Welcome to the exhibit" : "Добро пожаловать на выставку", narrator: lang==='en' ? "GENERAL INTRODUCTION" : "ОБЩЕЕ ВСТУПЛЕНИЕ", duration:"2:14" }}
+      audio={{
+        title: lang==='en' ? "Welcome to the exhibit" : "Добро пожаловать на выставку",
+        narrator: lang==='en' ? "АУДИОГИД · VESTIBULE" : "АУДИОГИД · ВЕСТИБЮЛЬ",
+        src: window.AUDIO && window.AUDIO.vestibule,
+        duration: "2:14"
+      }}
     >
       <div style={{
         background:"var(--ink)",color:"var(--paper)",

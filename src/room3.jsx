@@ -5,7 +5,12 @@ function Room3({ onExit, onNav }){
     <Room num={3} totalRooms={8} onExit={onExit} onNav={onNav}
       label={lang==='en' ? "Solzhenitsyn · Law of the Taiga" : "Солженицын · Закон тайги"}
       sub={lang==='en' ? "A code of dignity in inhuman conditions" : "Кодекс достоинства в нечеловеческих условиях"}
-      audio={{ title: lang==='en' ? "Shukhov's code of survival" : "Кодекс выживания Шухова", narrator:"YOUR AUDIO · АУДИО", duration:"6:02" }}
+      audio={{
+        title: lang==='en' ? "Shukhov's code of survival" : "Кодекс выживания Шухова",
+        narrator: lang==='en' ? "АУДИОГИД · SOLZHENITSYN I" : "АУДИОГИД · СОЛЖЕНИЦЫН I",
+        src: window.AUDIO && window.AUDIO.solz1,
+        duration: "6:02"
+      }}
       tint="linear-gradient(180deg, oklch(0.88 0.012 70) 0%, oklch(0.82 0.015 60) 100%)"
     >
       <window.FrostOverlay intensity={0.4}/>

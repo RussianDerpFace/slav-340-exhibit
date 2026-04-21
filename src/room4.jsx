@@ -40,7 +40,12 @@ function Room4({ onExit, onNav }){
     <Room num={4} totalRooms={8} onExit={onExit} onNav={onNav}
       label={lang==='en' ? "Solzhenitsyn · Bread, Kasha, Trowel" : "Солженицын · Хлеб, каша, мастерок"}
       sub={lang==='en' ? "Objects as acts of resistance" : "Предметы как акты сопротивления"}
-      audio={{ title: lang==='en' ? "Three artifacts, three acts of dignity" : "Три артефакта, три акта достоинства", narrator:"YOUR AUDIO · АУДИО", duration:"5:30" }}
+      audio={{
+        title: lang==='en' ? "Three artifacts, three acts of dignity" : "Три артефакта, три акта достоинства",
+        narrator: lang==='en' ? "АУДИОГИД · SOLZHENITSYN II" : "АУДИОГИД · СОЛЖЕНИЦЫН II",
+        src: window.AUDIO && window.AUDIO.solz2,
+        duration: "5:30"
+      }}
       tint="linear-gradient(180deg, oklch(0.88 0.012 70) 0%, oklch(0.82 0.015 60) 100%)"
     >
       <window.FrostOverlay intensity={0.7}/>

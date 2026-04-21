@@ -7,7 +7,12 @@ function Room5({ onExit, onNav }){
     <Room num={5} totalRooms={8} onExit={onExit} onNav={onNav}
       label={lang==='en' ? "Solzhenitsyn · An Almost Happy Day" : "Солженицын · Почти счастливый день"}
       sub={lang==='en' ? "Irony as a verdict on the system" : "Ирония как приговор системе"}
-      audio={{ title: lang==='en' ? "3,653 days: the arithmetic of annihilation" : "3 653 дня: арифметика уничтожения", narrator:"YOUR AUDIO · АУДИО", duration:"4:22" }}
+      audio={{
+        title: lang==='en' ? "3,653 days: the arithmetic of annihilation" : "3 653 дня: арифметика уничтожения",
+        narrator: lang==='en' ? "АУДИОГИД · SOLZHENITSYN III" : "АУДИОГИД · СОЛЖЕНИЦЫН III",
+        src: window.AUDIO && window.AUDIO.solz3,
+        duration: "4:22"
+      }}
       tint="linear-gradient(180deg, oklch(0.88 0.012 70) 0%, oklch(0.78 0.018 55) 100%)"
     >
       <window.FrostOverlay intensity={1.0}/>
